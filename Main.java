@@ -1,6 +1,15 @@
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
 public class Main {
     public static void main(String[] args) {
-        SistemaMonitoreo sistema = new SistemaMonitoreo();
-        sistema.iniciar();
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ignored) {}
+
+        SwingUtilities.invokeLater(() -> {
+            InterfazGrafica ui = new InterfazGrafica();
+            ui.setVisible(true);
+        });
     }
 }

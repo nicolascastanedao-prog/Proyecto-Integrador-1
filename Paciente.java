@@ -1,16 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Paciente {
-    String nombre;
-    int edad;
-    double peso;
-    double estatura;
-    String antecedentes;
+    private int id;
+    private String nombre;
+    private int edad;
+    private double peso;
+    private double estatura;
+    private String antecedentes;
 
-    List<ControlSalud> controles = new ArrayList<>();
-
-    public Paciente(String nombre, int edad, double peso, double estatura, String antecedentes) {
+    public Paciente(int id, String nombre, int edad, double peso, double estatura, String antecedentes) {
+        this.id = id;
         this.nombre = nombre;
         this.edad = edad;
         this.peso = peso;
@@ -18,18 +15,23 @@ public class Paciente {
         this.antecedentes = antecedentes;
     }
 
-    public void agregarControl(ControlSalud control) {
-        controles.add(control);
+    public Paciente(String nombre, int edad, double peso, double estatura, String antecedentes) {
+        this(0, nombre, edad, peso, estatura, antecedentes);
     }
 
-    public void mostrarHistorial() {
-        if (controles.isEmpty()) {
-            System.out.println("No hay controles registrados.");
-            return;
-        }
+    public int getId() { return id; }
+    public String getNombre() { return nombre; }
+    public int getEdad() { return edad; }
+    public double getPeso() { return peso; }
+    public double getEstatura() { return estatura; }
+    public String getAntecedentes() { return antecedentes; }
 
-        for (ControlSalud c : controles) {
-            System.out.println(c);
-        }
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setEdad(int edad) { this.edad = edad; }
+    public void setPeso(double peso) { this.peso = peso; }
+    public void setEstatura(double estatura) { this.estatura = estatura; }
+    public void setAntecedentes(String antecedentes) { this.antecedentes = antecedentes; }
+
+    @Override
+    public String toString() { return nombre; }
 }
